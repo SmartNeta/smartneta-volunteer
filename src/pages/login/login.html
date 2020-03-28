@@ -1,0 +1,40 @@
+<ion-header class="login-header auth-header">
+  <ion-navbar>
+    <ion-title style="color: black">Sign in</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+  <ion-row>
+    <ion-col class="bjplogo">
+      <img class="logo1" src="{{imageUrl}}">
+    </ion-col>
+  </ion-row>
+  <form class="login-form auth-form" [formGroup]="login" (ngSubmit)="doLogin(login.value)">
+    <ion-item>
+      <ion-label stacked class="textLabel">State</ion-label>
+      <ion-select [(ngModel)]="stateId" class="selectfrom" (ionChange)="showParliamentary(stateId)" interface="popover"
+        formControlName="state">
+        <ion-option *ngFor="let item of statelist; let i=index" value="{{item.id}}">{{item.state}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">Parliamentary Constituency</ion-label>
+      <ion-select [(ngModel)]="parliamentaryId" class="selectfrom" (ionChange)="showConstituency(parliamentaryId)"
+        interface="popover" formControlName="parliamentary">
+        <ion-option *ngFor="let item of parliamentarylist; let i=index" value="{{item.id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">Assembly Constituency</ion-label>
+      <ion-select [(ngModel)]="constituencyId" class="selectfrom" interface="popover" formControlName="constituency">
+        <ion-option *ngFor="let item of constituencylist; let i=index" value="{{item.id}}">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">Your Mobile no.</ion-label>
+      <ion-input type="tel" formControlName="mobile" minlength="10" maxlength="10"></ion-input>
+    </ion-item>
+    <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid">Submit</button>
+  </form>
+</ion-content>

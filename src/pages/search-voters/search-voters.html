@@ -1,0 +1,113 @@
+<ion-header class="login-header auth-header">
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" class="menu_icon"></ion-icon>
+      </button>
+    </ion-buttons>
+    <img class="logo" src="{{ imageUrl }}" />
+    <div id="ex4" float-right>
+      <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf="localdataSync.anyChange"
+        data-count="!">
+        <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+      </span>
+      <ion-icon class="refresh-icon1" name="md-sync" *ngIf="!localdataSync.anyChange"></ion-icon>
+    </div>
+    <ion-buttons end style="display: flex !important;">
+      <button ion-button (click)="gotoNotification()">
+        <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+  <form class="login-form auth-form" [formGroup]="form">
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "Voter Id" | translate
+      }}</ion-label>
+      <ion-input type="text" (ionChange)="validateInput(form)" formControlName="voterId"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="isPrefered">
+      <ion-label stacked class="textLabel">{{
+        "Ward Number" | translate
+      }}</ion-label>
+      <ion-input type="text" [disabled]="isPrefered" [value]="ward.no"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!isPrefered">
+      <ion-label stacked class="textLabel">{{ "Ward Number" | translate }}
+        <span class="cla-imp">*</span></ion-label>
+      <ionic-selectable item-content [ngModelOptions]="{ standalone: true }" [(ngModel)]="ward" [items]="wardList"
+        itemValueField="id" itemTextField="no" [canSearch]="true" (onChange)="wardChange($event)">
+        <ng-template ionicSelectableValueTemplate let-port="value">
+          {{ port.no }}
+        </ng-template>
+      </ionic-selectable>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{ "Booth Number" | translate }}
+      </ion-label>
+      <ionic-selectable item-content formControlName="booth" [items]="boothList" itemValueField="id" itemTextField="no"
+        [canSearch]="true" [(ngModel)]="selectedBooth" (onChange)="portChange($event)">
+        <ng-template ionicSelectableValueTemplate let-port="value">
+          {{ port.no }}
+        </ng-template>
+      </ionic-selectable>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "Serial Number" | translate
+      }}</ion-label>
+      <ion-input type="tel" (ionChange)="validateInput(form)" formControlName="srno"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "First Name" | translate
+      }}</ion-label>
+      <ion-input type="text" (ionChange)="validateInput(form)" formControlName="firstname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "Family Name" | translate
+      }}</ion-label>
+      <ion-input type="text" (ionChange)="validateInput(form)" formControlName="familyname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "Address" | translate
+      }}</ion-label>
+      <ion-input type="text" (ionChange)="validateInput(form)" formControlName="address"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="this.network.type != 'none'">
+      <ion-label stacked class="textLabel">{{
+        "Distance(in Km)" | translate
+      }}</ion-label>
+      <ion-input type="tel" (ionChange)="validateInput(form)" formControlName="distance"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked class="textLabel">{{
+        "Status" | translate
+      }}</ion-label>
+      <ion-select (ionChange)="validateInput(form)" class="selectfrom" interface="popover"
+        formControlName="respondedStatus">
+        <ion-option value="responded">Responded</ion-option>
+        <ion-option value="not at home">Not at home</ion-option>
+        <ion-option value="call back">Call back</ion-option>
+        <ion-option value="refused">Refused</ion-option>
+        <ion-option value="not visited">Not Visited</ion-option>
+        <ion-option value="none">None</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button block class="auth-action-button login-button" (click)="postSearch()"
+      [disabled]="!isValidSearchForm" type="submit">
+      {{ "Submit" | translate }}
+    </button>
+  </form>
+</ion-content>
+<ion-footer>
+  <p class="footer" *ngIf="descText != undefined">
+    &copy;{{ descText.footer }}
+    <a href="http://smartneta.com/privacy-policy/"><u class="privacy">Privacy Policy</u></a>
+  </p>
+</ion-footer>

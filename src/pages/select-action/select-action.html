@@ -1,0 +1,43 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange'
+                data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync" *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <div class="buttons">
+        <h2 class="head">{{'Select Action' | translate}}</h2>
+    </div>
+    <div *ngFor='let action of actionList'>
+        <ion-card (click)="actionFun(action.action)">
+            <ion-card-content class="card_content_padding" style="padding: 0px;">
+                <ion-row>
+                    <ion-col class="dept">
+                        {{action.label}}
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

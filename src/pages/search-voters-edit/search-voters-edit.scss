@@ -1,0 +1,116 @@
+search-voters-edit{
+    .login-content
+	{
+		.alt-options
+		{
+			.button
+			{
+				margin: 0px;
+				padding: 0px;
+				font-size: 1.4rem;
+			}
+
+			.forgot-button
+			{
+				color: $white-d;
+
+				.button-inner
+				{
+					justify-content: flex-start;
+				}
+			}
+
+			.signup-button
+			{
+				font-weight: 500;
+				color: $theme-color-2;
+
+				.button-inner
+				{
+					justify-content: flex-end;
+				}
+			}
+		}
+
+		.bjplogo{
+			text-align: center;
+			margin-top: 20px;
+		}
+		.logo1{
+			width: 55%;
+		}
+		
+		
+		.textLabel{
+			font-size: 1.5rem;
+		}
+		.show-hide-password .type-toggle {
+			top: 24px !important;
+		}
+		.sampark{
+			text-align: center;
+    		font-size: 25px;
+		}
+	}
+    .logo{
+        width: 42px;
+        margin-left: 7px;
+        vertical-align: middle;
+    }
+    .toolbar-content-md{
+        display: table-cell;
+    }
+    .scroll-content{
+        margin-bottom: 76px;
+    }
+    .bjplogo{
+        text-align: center;
+        margin-top: 20px !important;
+    }
+    .logo1{
+        width: 55%;
+    }
+    
+    .buttons{
+        width: 80%;
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        transform: translate(-50%, -50%);
+    }
+    .menu_icon{
+        float: right;
+        font-size: 30px;
+        padding-right: 10px;
+        padding-top: 7px;
+        color: black;
+    }
+    .bell_icon{
+        font-size: 30px;
+        margin-right: 15px;
+        color: black;
+    }
+
+    .auth-header .toolbar-background {
+        background-color: white;
+	}
+	.auth-header .toolbar-title, .auth-header .back-button, .auth-header .bar-button {
+        color: black;
+    }
+	.select-text{
+		color: #5e5874;
+	}
+	.button-md-secondary {
+        background-color: #6a6f73 !important;
+	}
+	.footer{
+		font-size: smaller;
+		padding: 0px 15px;
+		background-color: #444;
+		color: white;
+		text-align: center;
+    }
+    .privacy{
+        color: #00748f !important;
+    }
+}

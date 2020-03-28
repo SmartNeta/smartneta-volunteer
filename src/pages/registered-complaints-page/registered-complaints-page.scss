@@ -1,0 +1,214 @@
+registered-complaints-page{
+    .login-content
+	{
+		.alt-options
+		{
+			.button
+			{
+				margin: 0px;
+				padding: 0px;
+				font-size: 1.4rem;
+			}
+
+			.forgot-button
+			{
+				color: $white-d;
+
+				.button-inner
+				{
+					justify-content: flex-start;
+				}
+			}
+
+			.signup-button
+			{
+				font-weight: 500;
+				color: $theme-color-2;
+
+				.button-inner
+				{
+					justify-content: flex-end;
+				}
+			}
+		}
+		.login-form{
+			//margin-top: 37px;
+		}
+		.bjplogo{
+			text-align: center;
+			margin-top: 20px;
+		}
+		.logo1{
+			width: 55%;
+		}
+		
+		
+		.textLabel{
+			font-size: 1.5rem;
+		}
+		.show-hide-password .type-toggle {
+			top: 24px !important;
+		}
+		.sampark{
+			text-align: center;
+    		font-size: 25px;
+		}
+	}
+    .logo{
+        width: 42px;
+        margin-left: 7px;
+        vertical-align: middle;
+    }
+    .toolbar-content-md{
+        display: table-cell;
+    }
+    // .scroll-content{
+    //     margin-bottom: 76px;
+    // }
+    .bjplogo{
+        text-align: center;
+        margin-top: 20px !important;
+    }
+    .logo1{
+        width: 55%;
+    }
+	.space{
+        margin-bottom: 17px;
+        height: auto;
+    }
+    .schedule-data
+    {
+        border-radius: 6px;
+        background-color: $white;
+        padding: 12px 14px;
+        @include element-shadow();
+
+        .data-item
+        {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .schedule-data1{
+        border-radius: 6px;
+        background-color: $white;
+        padding: 12px 14px !important;
+        @include element-shadow();
+        .data-item
+        {
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px ;
+            color: #5e5874;
+        }
+	}
+    
+    .buttons{
+        width: 80%;
+        //min-height: 60%;
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        transform: translate(-50%, -50%);
+    }
+    .menu_icon{
+        float: right;
+        font-size: 30px;
+        padding-right: 10px;
+        padding-top: 7px;
+        // color: white;
+        color: black;
+    }
+    .bell_icon{
+        font-size: 30px;
+        margin-right: 15px;
+        color: black;
+    }
+
+    .auth-header .toolbar-background {
+        background-color: white;
+	}
+	.auth-header .toolbar-title, .auth-header .back-button, .auth-header .bar-button {
+        color: black;
+    }
+	.select-text{
+		color: #5e5874;
+	}
+	.button-md-secondary {
+        background-color: #6a6f73 !important;
+	}
+	.footer{
+        font-size: smaller;
+        padding: 0px 15px;
+        background-color: #444;
+        color: white;
+        text-align: center;
+    }
+    .privacy{
+        color: #00748f !important;
+	}
+	.item-radio.item-md ion-label{
+		color: #999;
+	}
+	.dept{
+        font-size: 20px;
+        font-weight: bold;
+        color: #f37435;
+        // text-align: center;
+        line-height: 30px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+	}
+	.ion-select{
+      max-width: 100% !important;
+    }
+    .refresh-icon {
+        margin-top: 5px;
+        font-size: 1.7em;
+        color: #d83c20;
+    }
+    .refresh-icon1{
+        margin-top: 5px;
+        font-size: 2.7em;
+        margin-right: 26px;
+    }
+    #ex4 .p1[data-count]:after{
+        position: absolute;
+        right: 54.2%;
+        top: 33%;
+        content: attr(data-count);
+        font-size: 40%;
+        padding: .2em;
+        border-radius: 50%;
+        line-height: 1.5em;
+        color: #d83c20;
+        background: black;
+        text-align: center;
+        min-width: 1.5em;
+        font-weight: bold;
+      }
+
+      //-------------
+
+      .head{
+        text-align: center;
+    }
+    .space{
+        margin-bottom: 17px;
+        height: auto;
+    }
+
+    .title{
+        font-size: 17px !important;
+        font-weight: bold;
+    }
+    .title1{
+        font-size: 17px !important;
+        font-weight: bold;
+        text-align:center;
+    }
+}

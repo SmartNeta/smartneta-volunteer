@@ -1,0 +1,92 @@
+select-action {
+    .logo {
+        width: 42px;
+        margin-left: 7px;
+        vertical-align: middle;
+    }
+
+    .toolbar-content-md {
+        display: table-cell;
+    }
+
+    .refresh-icon {
+        margin-top: 5px;
+        font-size: 1.7em;
+        color: #d83c20;
+    }
+
+    .refresh-icon1 {
+        margin-top: 5px;
+        font-size: 2.7em;
+        margin-right: 26px;
+    }
+
+    #ex4 .p1[data-count]:after {
+        position: absolute;
+        right: 54.2%;
+        top: 33%;
+        content: attr(data-count);
+        font-size: 40%;
+        padding: .2em;
+        border-radius: 50%;
+        line-height: 1.5em;
+        color: #d83c20;
+        background: black;
+        text-align: center;
+        min-width: 1.5em;
+        font-weight: bold;
+    }
+
+    .bell_icon {
+        font-size: 30px;
+        margin-right: 15px;
+        color: black;
+    }
+    .menu_icon {
+        float: right;
+        font-size: 30px;
+        padding-right: 10px;
+        padding-top: 7px;
+        color: black;
+    }
+
+    .auth-header .toolbar-background {
+        background-color: white;
+    }
+
+    .auth-header .toolbar-title,
+    .auth-header .back-button,
+    .auth-header .bar-button {
+        color: black;
+    }
+
+    .head {
+        text-align: center;
+    }
+
+    .dept {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f37435;
+        line-height: 30px;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .card-md {
+        border-radius: 6px !important;
+    }
+
+    .footer {
+        font-size: smaller;
+        padding: 0px 15px;
+        background-color: #444;
+        color: white;
+        text-align: center;
+    }
+
+    .privacy {
+        color: #00748f !important;
+    }
+}

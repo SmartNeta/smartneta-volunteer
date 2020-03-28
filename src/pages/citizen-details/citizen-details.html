@@ -1,0 +1,17 @@
+<ion-header class="login-header auth-header">
+  <ion-navbar>
+      <ion-buttons left>
+          <button ion-button menuToggle>
+              <ion-icon name="menu" class="menu_icon"></ion-icon>
+          </button>
+      </ion-buttons>
+      <img class="logo" src="{{imageUrl}}">
+  </ion-navbar>
+</ion-header>
+    
+<ion-content class="login-content auth-content">
+</ion-content>
+
+<ion-footer>
+  <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

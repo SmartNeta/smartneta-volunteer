@@ -1,0 +1,74 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange' data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync" ></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync"  *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <form class="login-form auth-form" [formGroup]="form">
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Voter Id' | translate}}</ion-label>
+            <ion-input type="text" formControlName="voterid"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'First Name' | translate}}</ion-label>
+            <ion-input type="text" formControlName="firstname"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Family Name' | translate}}</ion-label>
+            <ion-input type="text" formControlName="familyname"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Gender' | translate}}</ion-label>
+            <ion-select interface="popover" formControlName="gender">
+                <ion-option value="male">Male</ion-option>
+                <ion-option value="female">Female</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Age' | translate}}</ion-label>
+            <ion-input type="text" formControlName="age"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Booth Number' | translate}}</ion-label>
+            <ion-select class="selectfrom" interface="popover" formControlName="pollingstation">
+                <ion-option *ngFor="let item of bootlist; let i=index" value="{{item.id}}">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked class="textLabel">{{'Address' | translate}}</ion-label>
+            <ion-input type="text" formControlName="address"></ion-input>
+        </ion-item>
+
+        <ion-row>
+            <ion-col col-6>
+                <button ion-button block class="auth-action-button login-button" (click)="addNewVoters()" type="submit"
+                    [disabled]="!form.valid">{{'Submit' | translate}}</button>
+            </ion-col>
+            <ion-col col-6>
+                <button ion-button block class="auth-action-button login-button" color="secondary" (click)="back()">{{'Cancel'
+                    | translate}}</button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

@@ -1,0 +1,74 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange' data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync" *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <ion-label class="textLabel">Preferred Ward number</ion-label>
+    <ion-row>
+        <ion-col>
+            <ion-item>
+                <ion-label>Ward number</ion-label>
+                <ionic-selectable item-content [(ngModel)]="ward" [items]="wardlist" itemValueField="id" itemTextField="no"
+                    [canSearch]="true" (onChange)="portChange($event)">
+                    <ng-template ionicSelectableValueTemplate let-port="value">
+                        {{port.no}}
+                    </ng-template>
+                </ionic-selectable>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <button ion-button block class="auth-action-button login-button" (click)="sync()">Sync</button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+        </ion-col>
+    </ion-row>
+    <div *ngIf='enableSpinner' style="text-align: center;">
+            <ion-spinner name="dots"></ion-spinner>
+    </div>    
+    <div *ngIf="isSyncing">            
+        <div *ngIf="localWardList.length > 0">
+            <ion-row *ngFor='let ward of localWardList'>
+                <ion-col>
+                    Ward {{ward.no}} {{syncingstatus}}
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-row>
+            <ion-col>
+                Ward syncing inprogress... {{x}}/{{y}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                Ward synced ... {{z}}/{{y}}
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

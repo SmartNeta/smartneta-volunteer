@@ -1,0 +1,80 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange'
+                data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync" *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <ion-row>
+        <ion-col col-10>
+            <h2 class="head">{{'Voters' | translate}}</h2>
+        </ion-col>
+        <ion-col col-2>
+            <button *ngIf='createUser == "true"' ion-button block class="auth-action-button login-button" (click)="ShowAddNewVotersPage()">{{'Add'| translate}}</button>
+        </ion-col>
+    </ion-row>
+    <ng-container *ngIf="noRecords != 0">
+        <div class="space" *ngFor="let item of searchlistFinal; let i=index">
+            <ion-row>
+                <ion-col class="schedule-data1 shadow">
+                    <div class="data-item" style="width: 90%;float:left;">
+                        <div (click)="ShowSelectActionPage(item)">
+                            <div>{{'Voter Id' | translate}}: {{item.voter_id}} </div>
+                            <div>{{'First Name' | translate}}: {{item.first_name}}</div>
+                            <div>{{'Family Name' | translate}}: {{item.family_name}}</div>
+                            <div>{{'Gender' | translate}}: {{item.gender}}</div>
+                            <div>{{'Age' | translate}}: {{item.age}}</div>
+                            <div>{{'Address' | translate}}: {{item.address}}</div>
+                            <div>{{'Serial Number' | translate}}: {{item.srno}}</div>
+                            <div>{{'Booth Number' | translate}}: {{item.booth_no}}</div>
+                            <div>{{'Polling Booth' | translate}}: {{boothName}}</div>
+                            <div>{{'Status' | translate}}: <span style='color: green; text-transform: capitalize' *ngIf="item.responded_status == 'responded'">
+                                    {{item.responded_status}}</span> <span *ngIf="item.responded_status == 'null'">
+                                    None</span><span style='text-transform: capitalize' *ngIf="item.responded_status != 'responded' && item.responded_status != 'null'">
+                                    {{item.responded_status}}</span>
+                            </div>
+                        </div>
+                        <div style="display : none;">
+                            <button ion-button class="auth-action-button login-button" (click)="showComplaintPage(item.id)">Complaints</button>
+                            <button ion-button class="auth-action-button login-button" (click)="ShowMoreDetailPage(item.id)">More Details</button>
+                        </div>
+                    </div>
+                    <div style="width: 10%; float: right;">
+                        <ion-icon  *ngIf='updateUser == "true"' name="create" (click)="searchEdit(item)" class="edit-icon"></ion-icon>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Loading Users...">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ng-container>
+    <ion-row class="space" *ngIf="noRecords == 0">
+        <ion-col class="schedule-data1 shadow">
+            <div class="data-item">
+                <div class="title1">{{'No records found' | translate}}</div>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

@@ -1,0 +1,55 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange' data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync"  *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <h2 class="head">{{'Other Information' | translate}}</h2>
+    <ng-container *ngIf="noRecords != 0">
+    <ion-row class="space">
+        <ion-col class="schedule-data1 shadow">
+            <div class="data-item" *ngIf="complaints!=null && complaints!=undefined">            
+                <div class="title">{{'Voter Id' | translate}}: {{complaints.voterId}}</div>
+                <div>{{'Health Card Number' | translate}}: {{complaints.cust1 | translate}}</div>
+                <div>{{'Donation' | translate}}: {{complaints.cust2 | translate}}</div>
+                <div>{{'Health Insurance' | translate}}: {{complaints.cust3 | translate}}</div>
+                <div>{{'Other Insurance' | translate}}: {{complaints.cust4 | translate}}</div>
+                <div>{{'Service' | translate}}: {{complaints.cust5 | translate}}</div>
+                <div>{{'Financial' | translate}}: {{complaints.cust6 | translate}}</div>
+                <div>{{'Other Service' | translate}}: {{complaints.cust7 | translate}}</div>
+                <div>{{'Security' | translate}}: {{complaints.cust8 | translate}}</div>
+                <div>{{'Trust Donation' | translate}}: {{complaints.cust9 | translate}}</div>
+                <div>{{'Other' | translate}}: {{complaints.cust10 | translate}}</div>
+            </div>
+        </ion-col>
+    </ion-row>
+</ng-container>
+    <ion-row class="space" *ngIf="noRecords == 0">
+            <ion-col class="schedule-data1 shadow">
+                <div class="data-item">            
+                    <div class="title1">{{'No records found' | translate}}</div>
+                </div>
+            </ion-col>
+        </ion-row>
+</ion-content>
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>

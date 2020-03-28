@@ -1,0 +1,76 @@
+<ion-header class="login-header auth-header">
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu" class="menu_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+        <img class="logo" src="{{imageUrl}}">
+        <div id="ex4" float-right>
+            <span class="p1 fa-stack fa-2x has-badge" (click)="checkNetworkConnection()" *ngIf='localdataSync.anyChange'
+                data-count="!">
+                <ion-icon class="refresh-icon" name="md-sync"></ion-icon>
+            </span>
+            <ion-icon class="refresh-icon1" name="md-sync" *ngIf='!localdataSync.anyChange'></ion-icon>
+        </div>
+        <ion-buttons end style="display: flex !important;">
+            <button ion-button (click)="gotoNotification()">
+                <ion-icon name="ios-notifications" class="bell_icon"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+    <ion-item *ngIf="isPrefered">
+        <ion-label stacked class="textLabel">{{'Ward Number' | translate}}</ion-label>
+        <ion-input type="text" [disabled]='isPrefered' [value]="ward"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="!isPrefered">
+        <ion-label stacked class="textLabel">{{'Ward Number' | translate}} <span class="cla-imp">*</span></ion-label>
+        <ionic-selectable item-content [ngModelOptions]="{standalone: true}" [(ngModel)]="ward" [items]="wardList"
+            itemValueField="id" itemTextField="no" [canSearch]="true" (onChange)="wardChange($event)">
+            <ng-template ionicSelectableValueTemplate let-port="value">
+                {{port.no}}
+            </ng-template>
+        </ionic-selectable>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked class="textLabel">{{'Booth Number' | translate}} <span class="cla-imp">*</span></ion-label>
+        <ionic-selectable item-content  [(ngModel)]="selectedBooth"  [items]="boothList" itemValueField="id" itemTextField="no" [canSearch]="true"
+            (onChange)="portChange($event)">
+            <ng-template ionicSelectableValueTemplate let-port="value">
+                {{port.no}}
+            </ng-template>
+        </ionic-selectable>
+    </ion-item>
+    <ion-row *ngIf="voters" class="space">
+        <ion-col class="schedule-data1 shadow">
+            <div class="data-item">
+                <div class="title">{{'Voters' | translate}}</div>
+                <div>{{'Total' | translate}}: {{voters.total}}</div>
+                <div>{{'Responded' | translate}}: {{voters.status.responded}}</div>
+                <div>{{'Not at Home' | translate}}: {{voters.status.notAtHome}}</div>
+                <div>{{'Call Back' | translate}}: {{voters.status.callBack}}</div>
+                <div>{{'Refused' | translate}}: {{voters.status.refused}}</div>
+            </div>
+        </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="houses" class="space">
+        <ion-col class="schedule-data1 shadow">
+            <div class="data-item">
+                <div class="title">{{'Houses' | translate}}</div>
+                <div>{{'Total' | translate}}: {{houses.total}}</div>
+                <div>{{'Responded' | translate}}: {{houses.status.responded}}</div>
+                <div>{{'Not at Home' | translate}}: {{houses.status.notAtHome}}</div>
+                <div>{{'Call Back' | translate}}: {{houses.status.callBack}}</div>
+                <div>{{'Refused' | translate}}: {{houses.status.refused}}</div>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-content>
+<ion-footer>
+    <p class="footer" *ngIf="descText!=undefined">&copy;{{descText.footer}} <a href="http://smartneta.com/privacy-policy/"><u
+                class="privacy">Privacy Policy</u></a></p>
+</ion-footer>
